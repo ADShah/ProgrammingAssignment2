@@ -33,15 +33,8 @@ cacheSolve <- function(x, ...) {
     else {
         data <- x$get()
         ## rows and columns must be the same to create an inverse
-        r <- nrow(data)
-        c <- ncol(data) 
-        if (r == c) {
-            ## need to create an identity matrix
-            identm <- matrix(0, r, c)
-            identm <- diag(r)
-            im <- solve(data, identm, ...)
-            x$setinvmatrix(im)
-        }
+        im <- solve(data)
+        x$setinvmatrix(im)
         im
     }
 }
